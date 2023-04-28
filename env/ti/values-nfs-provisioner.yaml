@@ -1,0 +1,22 @@
+nfs:
+  server: MYNFSSERVER
+  path: /mnt/nfs
+  mountOptions:
+  volumeName: nfs-subdir-external-provisioner-root
+  # Reclaim policy for the main nfs volume
+  reclaimPolicy: Retain
+
+# For creating the StorageClass automatically:
+storageClass:
+  create: true
+
+  # Set a provisioner name. If unset, a name will be generated.
+  # provisionerName:
+
+  # Set StorageClass as the default StorageClass
+  # Ignored if storageClass.create is false
+  defaultClass: true
+
+  # Set a StorageClass name
+  # Ignored if storageClass.create is false
+  name: default

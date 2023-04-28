@@ -1,0 +1,10 @@
+  default_runtime_name = "nvidia"
+
+[plugins.cri.containerd.runtimes]
+  [plugins.cri.containerd.runtimes.nvidia]
+    privileged_without_host_devices = false
+    runtime_engine = ""
+    runtime_root = ""
+    runtime_type = "io.containerd.runc.v2"
+    [plugins.cri.containerd.runtimes.nvidia.options]
+      BinaryName = "/usr/local/nvidia/toolkit/nvidia-container-runtime"

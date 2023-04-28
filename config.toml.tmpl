@@ -1,0 +1,54 @@
+
+[plugins.opt]
+  path = "/var/lib/rancher/rke2/agent/containerd"
+
+[plugins.cri]
+  stream_server_address = "127.0.0.1"
+  stream_server_port = "10010"
+  enable_selinux = false
+  sandbox_image = "docker.io/rancher/pause:3.5"
+
+[plugins.cri.containerd]
+  disable_snapshot_annotations = true
+  snapshotter = "overlayfs"
+  default_runtime_name = "nvidia"
+
+      [plugins.cri.containerd.runtimes]
+        [plugins.cri.containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins.cri.containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/local/nvidia/toolkit/nvidia-container-runtime"
+
+[plugins.cri.containerd.runtimes.runc]
+  runtime_type = "io.containerd.runc.v2"
+
+
+
+[plugins.cri.registry.mirrors]
+
+[plugins.cri.registry.mirrors."docker.io"]
+  endpoint = ["https://docker.io"]
+
+
+[plugins.cri.registry.mirrors."gcr.io"]
+  endpoint = ["https://gcr.io"]
+
+
+[plugins.cri.registry.mirrors."ghcr.io"]
+  endpoint = ["https://ghcr.io"]
+
+
+[plugins.cri.registry.mirrors."k8s.gcr.io"]
+  endpoint = ["https://k8s.gcr.io"]
+
+
+[plugins.cri.registry.mirrors."nvcr.io"]
+  endpoint = ["https://nvcr.io"]
+
+
+
+
+
